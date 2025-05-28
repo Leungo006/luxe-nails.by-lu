@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Shop | Luxe Nails by LU</title>
+
+  <!-- Bootstrap CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600&family=Playfair+Display:wght@700&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet" />
+
+  <!-- Custom CSS -->
+  <link href="styles.css" rel="stylesheet" />
+</head>
+<body>
+  <header class="text-center py-3">
+    <a href="index.html" class="logo d-block fs-3 fw-bold">LUXE<span>NAILS</span></a>
+    <p class="mb-0">Premium nail products for professionals and enthusiasts</p>
+    <nav class="mt-3">
+      <a href="index.html" class="mx-2">Home</a>
+      <a href="shop.html" class="mx-2">Shop</a>
+      <a href="services.html" class="mx-2">Services</a>
+      <a href="about.html" class="mx-2">About Us</a>
+      <a href="contact.html" class="mx-2">Contact</a>
+      <a href="cart.html" class="mx-2">
+        <i class="fas fa-shopping-cart"></i> 
+        <span id="cart-count" class="cart-count">0</span>
+      </a>
+      <a href="booking-form.html" class="mx-2">Book now</a>
+    </nav>
+  </header>
+
+  <main class="container my-5">
+    <h1 class="text-center page-title mb-4">Our Signature Services</h1>
+
+    <div class="text-center mb-4">
+      <button class="btn btn-outline-dark category-btn active mx-1">All Services</button>
+      <button class="btn btn-outline-dark category-btn mx-1">Manicures</button>
+      <button class="btn btn-outline-dark category-btn mx-1">Pedicures</button>
+    </div>
+
+    <div class="row" id="services-container">
+      <!-- Manicure Services -->
+      <div class="col-md-4 mb-4 service-card" data-category="manicures">
+        <div class="card h-100">
+          <img src="images/manicure.jpg" class="card-img-top img-fluid" alt="Luxe Manicure">
+          <div class="card-body">
+            <h5 class="card-title">Luxe Signature Manicure | P65</h5>
+            <p class="card-text">Our most indulgent treatment featuring cuticle care, nail shaping, exfoliating scrub, hydrating mask, and a plain premium polish.</p>
+            <a href="booking-form.html" class="btn btn-primary">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-md-4 mb-4 service-card" data-category="manicures">
+        <div class="card h-100">
+          <img src="images/french_manicure.jpg" class="card-img-top img-fluid" alt="Gel Manicure">
+          <div class="card-body">
+            <h5 class="card-title">Gel Manicure | P75</h5>
+            <p class="card-text">Long-lasting gel polish with our signature manicure service. Chip-free shine for up to 3 weeks with a French design.</p>
+            <a href="booking-form.html" class="btn btn-primary">Book Now</a>
+          </div>
+        </div>
+      </div>
+
+      <!-- Pedicure -->
+      <div class="col-md-4 mb-4 service-card" data-category="pedicures">
+        <div class="card h-200">
+          <img src="images/gel_pedicure.jpg" class="card-img-top img-fluid" alt="Pedicures">
+          <div class="card-body">
+            <h5 class="card-title">Luxe Signature Pedicure | P85</h5>
+            <p class="card-text">Ultimate foot care with exfoliation, callus treatment, hydrating mask, leg massage, and polish.</p>
+            <a href="booking-form.html" class="btn btn-primary">Book Now</a>
+          </div>
+        </div>
+      </div>
+        </div>
+      </div>
+
+
+
+      <!-- Enhancements -->
+      <div class="col-md-4 mb-4 service-card" data-category="enhancements">
+        <div class="card h-100">
+          <img src="images/acrylic.jpg" class="card-img-top img-fluid" alt="Acrylic Set">
+          <div class="card-body">
+            <h5 class="card-title">Acrylic Full Set | P95</h5>
+            <p class="card-text">Custom-shaped acrylic extensions with your choice of length and shape. Includes polish.</p>
+            <a href="booking-form.html" class="btn btn-primary">Book Now</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <footer class="text-center py-4">
+    <div class="footer-links mb-2">
+      <a href="about.html">About Us</a> |
+      <a href="contact.html">Contact</a> |
+      <a href="shipping-policy.html">Shipping Policy</a>
+    </div>
+    <div class="social-icons mb-2">
+      <a href="#"><i class="fab fa-instagram me-2"></i></a>
+      <a href="#"><i class="fab fa-facebook me-2"></i></a>
+      <a href="#"><i class="fab fa-tiktok"></i></a>
+    </div>
+    <p class="small">&copy; 2025 Luxe Nails by LU. All rights reserved.</p>
+  </footer>
+
+
+  <!-- JavaScript for filtering -->
+  <script>
+    const categoryBtns = document.querySelectorAll('.category-btn');
+    const serviceCards = document.querySelectorAll('.service-card');
+
+    categoryBtns.forEach(btn => {
+      btn.addEventListener('click', () => {
+        // Toggle active class
+        categoryBtns.forEach(b => b.classList.remove('active'));
+        btn.classList.add('active');
+
+        // Get selected category
+        const category = btn.textContent.toLowerCase();
+
+        // Show/hide cards
+        serviceCards.forEach(card => {
+          const cardCategory = card.dataset.category.toLowerCase();
+          if (category === 'all services' || cardCategory.includes(category)) {
+            card.style.display = 'block';
+          } else {
+            card.style.display = 'none';
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>
